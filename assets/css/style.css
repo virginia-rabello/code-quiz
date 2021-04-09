@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+main p {
+    font-size: 2vw;
+}
+
+header {
+    padding: 2%;
+}
+header h4 a {
+    margin-left: auto;
+    text-decoration: none;
+    color: blueviolet;
+    font-size: 1.2vw;
+}
+
+header h4 {
+    display: inline-block;
+}
+
+.timer {
+    text-align: right;
+    margin-left: 80%;
+    }
+
+.start-screen {
+    padding: 12%;
+    text-align: center;
+}
+
+.button {
+    border-radius: 10%;
+    color: seashell;
+    font-size: larger;
+    background-color: rgb(98, 0, 128);
+}
+
+
