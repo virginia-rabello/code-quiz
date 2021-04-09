@@ -1,22 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Quiz</title>
-</head>
-<body>
-    <header>
-        <h4><a href="./scores.html">View high scores</a></br></h4>
-        <h4 id="timer">Time:</h4>
-    </header>
-    <main>
-        <div id="start-screen" class="start-screen">
-            <h1>Code Quiz Chalenge</h1>
-            <p>This is a code quiz chalenge, answer the questions before the time runs out. Every time you answer incorrectly you'll be penalized by 10 seconds. The seconds remaining after you're done will be your score.</p>
-            <button id="start-button" class="button" type="button">Start</button>
-        </div>
-    </main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="welcome">Are you ready?</h1>
+      <button id="start">Start</button>
+      <h2 id="countdown"></h2>
+      <p id="main"></p>
+    </div>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
