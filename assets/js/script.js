@@ -46,7 +46,7 @@ var divQuestions = document.querySelector("#start-screen");
 var startBtn = document.getElementById('start-button');
 
 function countDown(){
-    displayQuestions();
+    
     var timeLeft = 75;    
     var timer = setInterval(function(){
     document.getElementById('timer').innerHTML = 'Time: ' + timeLeft;
@@ -58,14 +58,15 @@ function countDown(){
 }, 1000);
 }
 
-function displayQuestions(){
-    var bntA =' <button id="bntA" class="button" type="button">'+ quizArray[1].a + '</button>'
-    var bntB =' <button id="bntA" class="button" type="button">'+ quizArray[1].b + '</button>'
-    var bntC =' <button id="bntA" class="button" type="button">'+ quizArray[1].c + '</button>'
-    var bntD =' <button id="bntA" class="button" type="button">'+ quizArray[1].d + '</button>'
+function displayQuestions(index){
+   
+    var bntA =' <button id="bntA" class="button" type="button">'+ quizArray[index].a + '</button>'
+    var bntB =' <button id="bntA" class="button" type="button">'+ quizArray[index].b + '</button>'
+    var bntC =' <button id="bntA" class="button" type="button">'+ quizArray[index].c + '</button>'
+    var bntD =' <button id="bntA" class="button" type="button">'+ quizArray[index].d + '</button>'
 
-   divQuestions.innerHTML = "<div><h1>"+ quizArray[0].q + "</h1><ul><li>"+ bntA + "</li><li>"+ bntB + "</li><li>"+ bntC + "</li><li>"+ bntD + "</li></ul></div>";
-    
+   divQuestions.innerHTML = "<div><h1>"+ quizArray[index].q + "</h1><ul><li>"+ bntA + "</li><li>"+ bntB + "</li><li>"+ bntC + "</li><li>"+ bntD + "</li></ul></div>";
 }
+
 
 startBtn.onclick = countDown;
