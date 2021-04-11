@@ -41,32 +41,69 @@ var quizArray = [
     }
 ];
 
+var timeLeft = 75;
+
+var score = 0;
+
+var index = 0;
+
+var footer = document.querySelector('footer');
+
 var divQuestions = document.querySelector("#start-screen");
 
-var startBtn = document.getElementById('start-button');
+var buttonHandler = function(event) {
+    var target = event.target;
+    var button = document.getElementById(target.id);
+    if(button.id === "start-button"){
+        countDown();
+        displayQuestion(index);
+    }
+    else{
+
+        for(i = 1 ; i < quizArray.length; i++){
+            displayQuestion(i);
+            checkAnswer(button);
+        }
+        }
+    }
 
 function countDown(){
-    
-    var timeLeft = 75;    
     var timer = setInterval(function(){
     document.getElementById('timer').innerHTML = 'Time: ' + timeLeft;
     if(timeLeft === 0){
         clearInterval(timer);
-        displayReport();
+        //displayReport();
     }
+    //if(button.id != quizArray[index].correctAnswer){
+     //   timeLeft=timeLeft-10;
+   // }
     timeLeft--;
 }, 1000);
 }
 
-function displayQuestions(index){
-   
-    var bntA =' <button id="bntA" class="button" type="button">'+ quizArray[index].a + '</button>'
-    var bntB =' <button id="bntA" class="button" type="button">'+ quizArray[index].b + '</button>'
-    var bntC =' <button id="bntA" class="button" type="button">'+ quizArray[index].c + '</button>'
-    var bntD =' <button id="bntA" class="button" type="button">'+ quizArray[index].d + '</button>'
+function displayQuestion(i){
 
-   divQuestions.innerHTML = "<div><h1>"+ quizArray[index].q + "</h1><ul><li>"+ bntA + "</li><li>"+ bntB + "</li><li>"+ bntC + "</li><li>"+ bntD + "</li></ul></div>";
+    btnA =' <button id="a" class="button" type="button">'+ quizArray[i].a + '</button>'
+    btnB =' <button id="b" class="button" type="button">'+ quizArray[i].b + '</button>'
+    btnC =' <button id="c" class="button" type="button">'+ quizArray[i].c + '</button>'
+    btnD =' <button id="d" class="button" type="button">'+ quizArray[i].d + '</button>'
+
+   divQuestions.innerHTML = '<div id = "question"><h1>'+ quizArray[i].q + "</h1><ul><li>"+ btnA + "</li><li>"+ btnB + "</li><li>"+ btnC + "</li><li>"+ btnD + "</li></ul></div>";
+   divQuestions = document.querySelector("#question");
 }
 
-
-startBtn.onclick = countDown;
+function checkAnswer(answer){
+    console.log(answer.id);
+    console.log(quizArray[index].correctAnswer);
+     if(answer.id != quizArray[index].correctAnswer){
+        footer.innerHTML = "<h1>WRONG!</h1>";
+        timeLeft = timeLeft - 10;
+    }
+    else if(answer.id === quizArray[index].correctAnswer){
+        footer.innerHTML = "<h1>CORRECT!</h1>";
+    }
+   
+}
+ 
+    divQuestions.addEventListener("click",buttonHandler);
+     
