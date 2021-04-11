@@ -51,7 +51,7 @@ var stopTimer = false;
 
 var footer = document.querySelector('footer');
 
-var divQuestions = document.querySelector("#start-screen");
+var divScreen = document.querySelector("#start-screen");
 
 var buttonHandler = function(event) {
     var target = event.target;
@@ -62,14 +62,16 @@ var buttonHandler = function(event) {
         index++;
     }
     else{   
+        checkAnswer(button);
             if(index < quizArray.length){
             displayQuestion(index);
-            checkAnswer(button);
+            
             index++;
             }
             else {
-                score = timeLeft;
                 stopTimer = true;
+                score = timeLeft;
+                saveScore(score);
              }
         }
     }
@@ -77,9 +79,12 @@ var buttonHandler = function(event) {
 function countDown(){
     var timer = setInterval(function(){
     document.getElementById('timer').innerHTML = 'Time: ' + timeLeft;
-    if(timeLeft === 0 || stopTimer === true){
+    if(timeLeft === 0){
         clearInterval(timer);
         footer.innerHTML = "<h1>GAME OVER!</h1>";
+    }
+    if(stopTimer === true){
+        clearInterval(timer);
     }
    
     timeLeft--;
@@ -93,8 +98,8 @@ function displayQuestion(i){
     btnC =' <button id="c" class="button" type="button">'+ quizArray[i].c + '</button>'
     btnD =' <button id="d" class="button" type="button">'+ quizArray[i].d + '</button>'
 
-   divQuestions.innerHTML = '<div id = "question"><h1>'+ quizArray[i].q + "</h1><ul><li>"+ btnA + "</li><li>"+ btnB + "</li><li>"+ btnC + "</li><li>"+ btnD + "</li></ul></div>";
-   divQuestions = document.querySelector("#question");
+   divScreen.innerHTML = '<div id = "question"><h1>'+ quizArray[i].q + "</h1><ul><li>"+ btnA + "</li><li>"+ btnB + "</li><li>"+ btnC + "</li><li>"+ btnD + "</li></ul></div>";
+   divScreen = document.querySelector("#question");
 }
 
 function checkAnswer(answer){
@@ -108,6 +113,12 @@ function checkAnswer(answer){
     }
    
 }
+
+function saveScore(num){
+    var submitButton = '<button id="submit" class="start-button" type="submit" />';
+    var name = '<input type="text" name="name" placeholder="Enter you inicials" />'
+    divScreen.innerHTML = '<div id = "submit-score"><h1>All Done!</h1><h3>Your final Score is '+ score +'!</h3><h3>Enter inicials:'+ name + '</h3>' + submitButton + 'Submit</button></div>' 
+}
  
-    divQuestions.addEventListener("click",buttonHandler);
+    divScreen.addEventListener("click",buttonHandler);
      
