@@ -47,6 +47,8 @@ var score = 0;
 
 var index = 0;
 
+var stopTimer = false;
+
 var footer = document.querySelector('footer');
 
 var divQuestions = document.querySelector("#start-screen");
@@ -57,26 +59,29 @@ var buttonHandler = function(event) {
     if(button.id === "start-button"){
         countDown();
         displayQuestion(index);
+        index++;
     }
-    else{
-
-        for(i = 1 ; i < quizArray.length; i++){
-            displayQuestion(i);
+    else{   
+            if(index < quizArray.length){
+            displayQuestion(index);
             checkAnswer(button);
+            index++;
+            }
+            else {
+                score = timeLeft;
+                stopTimer = true;
+             }
         }
-    }
     }
 
 function countDown(){
     var timer = setInterval(function(){
     document.getElementById('timer').innerHTML = 'Time: ' + timeLeft;
-    if(timeLeft === 0){
+    if(timeLeft === 0 || stopTimer === true){
         clearInterval(timer);
-        //displayReport();
+        footer.innerHTML = "<h1>GAME OVER!</h1>";
     }
-    //if(button.id != quizArray[index].correctAnswer){
-     //   timeLeft=timeLeft-10;
-   // }
+   
     timeLeft--;
 }, 1000);
 }
@@ -93,13 +98,12 @@ function displayQuestion(i){
 }
 
 function checkAnswer(answer){
-    console.log(answer.id);
-    console.log(quizArray[index].correctAnswer);
-     if(answer.id != quizArray[index].correctAnswer){
+
+     if(answer.id != quizArray[index-1].correctAnswer){
         footer.innerHTML = "<h1>WRONG!</h1>";
         timeLeft = timeLeft - 10;
     }
-    else if(answer.id === quizArray[index].correctAnswer){
+    else if(answer.id === quizArray[index-1].correctAnswer){
         footer.innerHTML = "<h1>CORRECT!</h1>";
     }
    
