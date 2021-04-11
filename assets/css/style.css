@@ -60,3 +60,10 @@ header h4 {
     background-color: rgb(98, 0, 128);
     width: 40%;
 }
+
+footer h1 {
+    color: grey;
+    text-align: center;
+    font-style: italic;
+    border-top: 5px solid grey;
+}

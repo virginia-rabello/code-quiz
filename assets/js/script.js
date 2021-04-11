@@ -64,7 +64,7 @@ var buttonHandler = function(event) {
             displayQuestion(i);
             checkAnswer(button);
         }
-        }
+    }
     }
 
 function countDown(){
