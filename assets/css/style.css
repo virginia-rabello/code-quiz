@@ -14,11 +14,16 @@ main p {
 header {
     padding: 2%;
 }
-header h4 a {
+
+header button {
     margin-left: auto;
     text-decoration: none;
     color: blueviolet;
     font-size: 1.2vw;
+    background-color: white;
+    border: none;
+    outline: none;
+    
 }
 
 header h4 {
@@ -35,6 +40,7 @@ header h4 {
     padding: 12%;
     text-align: center;
     height: 50%;
+    margin-top: auto;
 }
 
 .start-screen ul li {
@@ -62,9 +68,36 @@ header h4 {
     width: 40%;
 }
 
+footer {
+    padding-bottom: 30%;
+    width: 60%;
+    margin-left: 20%;
+}
+
 footer h1 {
     color: grey;
     text-align: center;
     font-style: italic;
     border-top: 5px solid grey;
 }
+
+table {
+    margin-left: 30%;
+    table-layout: fixed;
+    width: 40%;
+    border-collapse: collapse;
+    font-size: 1.5vw;
+    
+}
+table th {
+    background-color: rgba(89, 0, 255, 0.6);
+}
+
+tbody tr:nth-child(odd){
+    background-color: rgba(89, 0, 255, 0.2);
+}
+tbody tr:nth-child(even){
+    background-color: rgba(89, 0, 255, 0.4);
+}
+
+
