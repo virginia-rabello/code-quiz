@@ -54,7 +54,7 @@ var footer = document.querySelector('footer');
 
 var divScreen = document.querySelector("#start-screen");
 
-var startScreen = '<div id="start-screen" class="start-screen"><h1>Code Quiz Chalenge</h1><p>This is a code quiz chalenge. Answer the questions before the time runs out. Every time you answer incorrectly you will be penalized by 10 seconds. The seconds remaining after you are done will be your score.</p><button id="start-button" class="start-button" type="button">Start</button></div><footer></footer>'
+var startScreen = '<div id="start-screen" class="start-screen"><h1>Code Quiz Chalenge</h1><p>This is a code quiz chalenge. Answer the questions before the time runs out. Every time you answer incorrectly you will be penalized by 10 seconds. The seconds remaining after you are done will be your score.</p><button id="start-button" class="hover start-button" type="button">Start</button></div><footer></footer>'
 
 var form;
 
@@ -63,6 +63,8 @@ var endLoop = false;
 var highScoresLink = document.getElementById("my-link");
 
 var header = document.querySelector('header');
+
+var timer;
     
 var buttonHandler = function(event) {
    event.preventDefault();
@@ -70,6 +72,8 @@ var buttonHandler = function(event) {
     var button = document.getElementById(target.id);
     if(button.type === "button"){
         if(button.id === "start-button"){
+            stopTimer = false;
+            timeLeft = 75;
             countDown();
             displayQuestion(index);
             index++;
@@ -84,8 +88,7 @@ var buttonHandler = function(event) {
                     stopTimer = true;
                     score = timeLeft;
                     saveScoreForm(score);
-                    footer.remove();
-                    timer.style.display = "none";
+                    footer.innerHTML = "";
                 }
             }
         }
@@ -107,10 +110,11 @@ var buttonHandler = function(event) {
         }
         if(button.id === "my-link"){
            showHighScores();
+           stopTimer = true;
         }
 }
 function countDown(){
-    var timer = setInterval(function(){
+    timer = setInterval(function(){
     document.getElementById('timer').innerHTML = 'Time: ' + timeLeft;
     if(timeLeft <= 0){
         clearInterval(timer);
@@ -126,10 +130,10 @@ function countDown(){
 
 function displayQuestion(i){
 
-    btnA =' <button id="a" class="button" type="button">'+ quizArray[i].a + '</button>'
-    btnB =' <button id="b" class="button" type="button">'+ quizArray[i].b + '</button>'
-    btnC =' <button id="c" class="button" type="button">'+ quizArray[i].c + '</button>'
-    btnD =' <button id="d" class="button" type="button">'+ quizArray[i].d + '</button>'
+    btnA =' <button id="a" class="hover button" type="button">'+ quizArray[i].a + '</button>'
+    btnB =' <button id="b" class="hover button" type="button">'+ quizArray[i].b + '</button>'
+    btnC =' <button id="c" class="hover button" type="button">'+ quizArray[i].c + '</button>'
+    btnD =' <button id="d" class="hover button" type="button">'+ quizArray[i].d + '</button>'
 
    divScreen.innerHTML = '<div id = "start-screen"><h1>'+ quizArray[i].q + "</h1><ul><li>"+ btnA + "</li><li>"+ btnB + "</li><li>"+ btnC + "</li><li>"+ btnD + "</li></ul></div>";
    a
@@ -138,17 +142,18 @@ function displayQuestion(i){
 function checkAnswer(answer){
 
      if(answer.id != quizArray[index-1].correctAnswer){
-        footer.innerHTML = "<h1>WRONG!</h1>";
-        timeLeft = timeLeft - 10;
+       timeLeft = timeLeft - 10;
+       footer.innerHTML = "<h1>WRONG</h1>";
+        
     }
     else if(answer.id === quizArray[index-1].correctAnswer){
-        footer.innerHTML = "<h1>CORRECT!</h1>";
+        footer.innerHTML = "<h1>CORRECT</h1>";
     }
      
 }
 
 function saveScoreForm(num){
-    var submitButton = '<button id="submit" class="start-button" type="submit" />';
+    var submitButton = '<button id="submit" class="hover start-button" type="submit" />';
     var name = '<input id ="inicials" type="text" name="name" placeholder="Enter you inicials" />'
     divScreen.innerHTML = '<div id = "submit-score"><h1>All Done!</h1><h3>Your final Score is '+ num +'!</h3><h3>Enter inicials:'+ name + '</h3>' + submitButton + 'Submit</button></div>' 
     
@@ -159,26 +164,46 @@ function scoreStorage (){
         inicials:"",
     }
     var inicials = document.getElementById("inicials").value;
+    if(inicials === ""){
+        alert("You forgot to type your inicials!");
+        return false;
+    }
+    var ini = inicials.toUpperCase();
     scoreEl.score = score;
-    scoreEl.inicials = inicials;
+    scoreEl.inicials = ini;
     arrayScores.push(scoreEl);
     localStorage.setItem("scores",JSON.stringify(arrayScores));
    
 }
 
+function compare(a, b) {
+    var comparison = 0;
+    if (a.score < b.score) {
+      comparison = 1;
+    } else if (a.score > b.score) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+
 function showHighScores(){
-    var goBackButton = '<button id="go-back" class="start-button" type="submit" />';
-    var cleanScores = '<button id="clean" class="start-button" type="submit" />';
+    var goBackButton = '<button id="go-back" class="hover start-button scores-button" type="submit" />';
+    var cleanScores = '<button id="clean" class="hover start-button scores-button" type="submit" />';
     var tableScores = '<table><tr><th>Name Inicials</th><th>Score</th></tr>';
     var readScores = localStorage.getItem("scores");
     var parseScores = JSON.parse(readScores);
+    if(parseScores.length > 1){
+    parseScores.sort(compare);
+    }
     var tableEls = "";
     if(readScores){
     parseScores.forEach(element => {
     tableEls = tableEls + "<tr><td>"+ element.inicials + "</td><td>" + element.score + "</td></tr>"  
     });
-}
-    divScreen.innerHTML = '<div id = "high-scores"><h1>High Scores</h1>'+ tableScores + tableEls +'</div>'+ goBackButton + 'Go Back</button>' + cleanScores + 'Clean Scores</button>';
+
+}  
+    
+    divScreen.innerHTML = '<div id = "high-scores"><h1>High Scores</h1></div><div class = "high-scores">'+ tableScores + tableEls + goBackButton + 'Go Back</button>' + cleanScores + 'Clean Scores</button></div>';
 }
 
 if(endLoop === false){

@@ -19,7 +19,7 @@ header button {
     margin-left: auto;
     text-decoration: none;
     color: blueviolet;
-    font-size: 1.2vw;
+    font-size: 1.5vw;
     background-color: white;
     border: none;
     outline: none;
@@ -37,9 +37,9 @@ header h4 {
     }
 
 .start-screen {
-    padding: 12%;
+    padding: 6%;
     text-align: center;
-    height: 50%;
+    height: 20%;
     margin-top: auto;
 }
 
@@ -60,12 +60,40 @@ header h4 {
     background-color: rgb(98, 0, 128);
 }
 
+.high-scores {
+    display: flex; 
+    flex-direction: column-reverse;
+}
+
 .button {
     border-radius: 10%;
     color: seashell;
     font-size: 1.8vw;
     background-color: rgb(98, 0, 128);
     width: 40%;
+}
+
+.hover:active{
+    background-color: rgba(98, 0, 128, 1);
+}
+
+.hover:hover {
+    background-color: rgb(98, 0, 128, 0.5);
+}
+
+.scores-button {
+    align-self: center;
+    width: 20%;
+    margin-top: 2vw;
+}
+
+.link:active {
+    color: blueviolet;
+}
+
+.link:hover {
+    color:rgb(95, 16, 42);
+    font-weight: bold;
 }
 
 footer {
@@ -101,3 +129,17 @@ tbody tr:nth-child(even){
 }
 
 
+@media screen and (max-width: 980px) {
+    table {
+      flex: 1 100%;
+    }
+  
+    .button {
+      width: 60%;
+    }
+  
+    .start-screen {
+      flex-basis: 100%;
+    }
+  
+  }
