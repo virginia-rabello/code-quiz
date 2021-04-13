@@ -135,6 +135,7 @@ function countDown(){
     if(timeLeft <= 0){
         clearInterval(timer);
         footer.innerHTML = "<h1>GAME OVER!</h1>";
+        saveScoreForm();
     }
     if(stopTimer === true){
         clearInterval(timer);

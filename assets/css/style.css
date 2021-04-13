@@ -63,6 +63,7 @@ h2 {
     color: seashell;
     font-size: 1.8vw;
     background-color: rgb(98, 0, 128);
+    outline: none;
 }
 
 .high-scores {
