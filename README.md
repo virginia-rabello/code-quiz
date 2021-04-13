@@ -13,11 +13,11 @@ This aplication is a quiz with 5 questions and multiple choices answers, the rul
 
 ** Screenshots **
 
-![Game Over screen](assets\images\game-over.jpg)
-![High Scores no scores](assets\images\high-score-screen.jpg)
-![High Scores saved](assets\images\high-scores-saved.jpg)
-![Question screen](assets\images\quiz-questions.jpg)
-![Score submit form](assets\images\score-form.jpg)
+![Game Over screen](C:\users\vikin\virginia_r\projects\code-quiz\assets\images\game-over.jpg)
+![High Scores no scores](C:\users\vikin\virginia_r\projects\code-quiz\assets\images\high-score-screen.jpg)
+![High Scores saved](C:\users\vikin\virginia_r\projects\code-quiz\assets\images\high-scores-saved.jpg)
+![Question screen](C:\users\vikin\virginia_r\projects\code-quiz\assets\images\quiz-questions.jpg)
+![Score submit form](C:\users\vikin\virginia_r\projects\code-quiz\assets\images\score-form.jpg)
 
 ** Links **
 
