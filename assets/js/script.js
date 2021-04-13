@@ -113,12 +113,13 @@ var buttonHandler = function(event) {
                 showHighScores();
                 endLoop = true;
             }
+            if(button.id === "my-link"){
+                showHighScores();
+                stopTimer = true;
+                footer.innerHTML = "";
+             }
         }
-        else if(button.id === "my-link"){
-           showHighScores();
-           stopTimer = true;
-           footer.innerHTML = "";
-        }
+        
         else {
             return false;
         }
