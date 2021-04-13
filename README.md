@@ -13,7 +13,7 @@ This aplication is a quiz with 5 questions and multiple choices answers, the rul
 
 ** Screenshots **
 
-![Game Over screen](C:\users\vikin\virginia_r\projects\code-quiz\assets\images\game-over.jpg)
+![Game Over screen](https://github.com/virginia-rabello/code-quiz/blob/main/assets/images/game-over.jpg)
 ![High Scores no scores](C:\users\vikin\virginia_r\projects\code-quiz\assets\images\high-score-screen.jpg)
 ![High Scores saved](C:\users\vikin\virginia_r\projects\code-quiz\assets\images\high-scores-saved.jpg)
 ![Question screen](C:\users\vikin\virginia_r\projects\code-quiz\assets\images\quiz-questions.jpg)
