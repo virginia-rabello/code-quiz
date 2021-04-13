@@ -53,6 +53,11 @@ header h4 {
     font-size: 2.5vw;
 }
 
+h2 {
+    text-align: center;
+
+}
+
 .start-button {
     border-radius: 10%;
     color: seashell;
@@ -66,11 +71,12 @@ header h4 {
 }
 
 .button {
-    border-radius: 10%;
+    border-radius: 10vw;
     color: seashell;
     font-size: 1.8vw;
     background-color: rgb(98, 0, 128);
     width: 40%;
+    outline: none;
 }
 
 .hover:active{
@@ -115,8 +121,18 @@ table {
     width: 40%;
     border-collapse: collapse;
     font-size: 1.5vw;
-    
+    text-align: center;
 }
+
+.form {
+    font-size: xx-large;
+}
+
+.form input{
+    font-size: xx-large;
+    width: 6%;
+}
+
 table th {
     background-color: rgba(89, 0, 255, 0.6);
 }
