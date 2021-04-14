@@ -27,8 +27,8 @@ var quizArray = [
     {
         q:'What method you can use to convert a content to strings before to save in the local storage?',
         a:'localStorage.setItem()',
-        b:'JSON.stringfy()',
-        c:'JOHN.stringfy()',
+        b:'JSON.stringify()',
+        c:'JOHN.stringify()',
         d:'I command you to save this thing as string',
         correctAnswer:'b'
     },
